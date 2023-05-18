@@ -1,276 +1,122 @@
-import React from "react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import {
-    Navbar,
-    MobileNav,
-    Typography,
-    Button,
-    Menu,
-    MenuHandler,
-    MenuList,
-    MenuItem,
-    Avatar,
-    Card,
-    IconButton,
-} from "@material-tailwind/react";
-import {
-    CubeTransparentIcon,
-    UserCircleIcon,
-    CodeBracketSquareIcon,
-    Square3Stack3DIcon,
-    ChevronDownIcon,
-    Cog6ToothIcon,
-    InboxArrowDownIcon,
-    LifebuoyIcon,
-    PowerIcon,
-    RocketLaunchIcon,
-    Bars2Icon,
-} from "@heroicons/react/24/outline";
+const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-// profile menu component
-const profileMenuItems = [
-    {
-        label: "My Profile",
-        icon: UserCircleIcon,
-    },
-    {
-        label: "Edit Profile",
-        icon: Cog6ToothIcon,
-    },
-    {
-        label: "Inbox",
-        icon: InboxArrowDownIcon,
-    },
-    {
-        label: "Help",
-        icon: LifebuoyIcon,
-    },
-    {
-        label: "Sign Out",
-        icon: PowerIcon,
-    },
-];
-
-function ProfileMenu() {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const closeMenu = () => setIsMenuOpen(false);
-
-    return (
-        <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
-            <MenuHandler>
-                <Button
-                    variant="text"
-                    color="blue-gray"
-                    className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
-                >
-                    <Avatar
-                        variant="circular"
-                        size="sm"
-                        alt="candice wu"
-                        className="border border-blue-500 p-0.5"
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-                    />
-                    <ChevronDownIcon
-                        strokeWidth={2.5}
-                        className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
-                            }`}
-                    />
-                </Button>
-            </MenuHandler>
-            <MenuList className="p-1">
-                {profileMenuItems.map(({ label, icon }, key) => {
-                    const isLastItem = key === profileMenuItems.length - 1;
-                    return (
-                        <MenuItem
-                            key={label}
-                            onClick={closeMenu}
-                            className={`flex items-center gap-2 rounded ${isLastItem
-                                ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                                : ""
-                                }`}
-                        >
-                            {React.createElement(icon, {
-                                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                                strokeWidth: 2,
-                            })}
-                            <Typography
-                                as="span"
-                                variant="small"
-                                className="font-normal"
-                                color={isLastItem ? "red" : "inherit"}
-                            >
-                                {label}
-                            </Typography>
-                        </MenuItem>
-                    );
-                })}
-            </MenuList>
-        </Menu>
-    );
-}
-
-// nav list menu
-const navListMenuItems = [
-    {
-        title: "@material-tailwind/html",
-        description:
-            "Learn how to use @material-tailwind/html, packed with rich components and widgets.",
-    },
-    {
-        title: "@material-tailwind/react",
-        description:
-            "Learn how to use @material-tailwind/react, packed with rich components for React.",
-    },
-    {
-        title: "Material Tailwind PRO",
-        description:
-            "A complete set of UI Elements for building faster websites in less time.",
-    },
-];
-
-function NavListMenu() {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-    const triggers = {
-        onMouseEnter: () => setIsMenuOpen(true),
-        onMouseLeave: () => setIsMenuOpen(false),
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
     };
-
-    const renderItems = navListMenuItems.map(({ title, description }) => (
-        <a href="#" key={title}>
-            <MenuItem>
-                <Typography variant="h6" color="blue-gray" className="mb-1">
-                    {title}
-                </Typography>
-                <Typography variant="small" color="gray" className="font-normal">
-                    {description}
-                </Typography>
-            </MenuItem>
-        </a>
-    ));
-
     return (
-        <React.Fragment>
-            <Menu open={isMenuOpen} handler={setIsMenuOpen}>
-                <MenuHandler>
-                    <Typography as="a" href="#" variant="small" className="font-normal">
-                        <MenuItem
-                            {...triggers}
-                            className="hidden items-center gap-2 text-blue-gray-900 lg:flex lg:rounded-full"
-                        >
-                            <Square3Stack3DIcon className="h-[18px] w-[18px]" /> Pages{" "}
-                            <ChevronDownIcon
-                                strokeWidth={2}
-                                className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
-                                    }`}
-                            />
-                        </MenuItem>
-                    </Typography>
-                </MenuHandler>
-                <MenuList
-                    {...triggers}
-                    className="hidden w-[36rem] grid-cols-7 gap-3 overflow-visible lg:grid"
-                >
-                    <Card
-                        color="blue"
-                        shadow={false}
-                        variant="gradient"
-                        className="col-span-3 grid h-full w-full place-items-center rounded-md"
-                    >
-                        <RocketLaunchIcon strokeWidth={1} className="h-28 w-28" />
-                    </Card>
-                    <ul className="col-span-4 flex w-full flex-col gap-1">
-                        {renderItems}
-                    </ul>
-                </MenuList>
-            </Menu>
-            <MenuItem className="flex items-center gap-2 text-blue-gray-900 lg:hidden">
-                <Square3Stack3DIcon className="h-[18px] w-[18px]" /> Pages{" "}
-            </MenuItem>
-            <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
-                {renderItems}
-            </ul>
-        </React.Fragment>
-    );
-}
-
-// nav list component
-const navListItems = [
-    {
-        label: "Account",
-        icon: UserCircleIcon,
-    },
-    {
-        label: "Blocks",
-        icon: CubeTransparentIcon,
-    },
-    {
-        label: "Docs",
-        icon: CodeBracketSquareIcon,
-    },
-];
-
-function NavList() {
-    return (
-        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-            <NavListMenu />
-            {navListItems.map(({ label, icon }, key) => (
-                <Typography
-                    key={label}
-                    as="a"
-                    href="#"
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                >
-                    <MenuItem className="flex items-center gap-2 lg:rounded-full">
-                        {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-                        {label}
-                    </MenuItem>
-                </Typography>
-            ))}
-        </ul>
-    );
-}
-
-export default function ComplexNavbar() {
-    const [isNavOpen, setIsNavOpen] = React.useState(false);
-    const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
-
-    React.useEffect(() => {
-        window.addEventListener(
-            "resize",
-            () => window.innerWidth >= 960 && setIsNavOpen(false)
-        );
-    }, []);
-
-    return (
-        <Navbar className="mx-auto max-w-screen-xl p-2 lg:rounded-full lg:pl-6">
-            <div className="relative mx-auto flex items-center text-blue-gray-900">
-                <Typography
-                    as="a"
-                    href="#"
-                    className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
-                >
-                    Material Tailwind
-                </Typography>
-                <div className="absolute top-2/4 left-2/4 hidden -translate-x-2/4 -translate-y-2/4 lg:block">
-                    <NavList />
-                </div>
-                <IconButton
-                    size="sm"
-                    color="blue-gray"
-                    variant="text"
-                    onClick={toggleIsNavOpen}
-                    className="ml-auto mr-2 lg:hidden"
-                >
-                    <Bars2Icon className="h-6 w-6" />
-                </IconButton>
-                <ProfileMenu />
+        <div>
+            <div className="bg-gradient-to-bl from-purple-400 via-purple-800 to-violet-200">
+                <header className="sticky inset-x-0 top-0 z-10 w-full">
+                    <div className="px-4 mx-auto sm:px-6 lg:px-8">
+                        <div className="flex items-center justify-between h-16 lg:h-20">
+                            <div className="flex-shrink-0">
+                                <Link to={`/`} title="" className="flex">
+                                    <img
+                                        className="w-auto h-8"
+                                        src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/5/logo.svg"
+                                        alt=""
+                                    />
+                                </Link>
+                            </div>
+                            <div className="hidden lg:flex lg:items-center lg:justify-center lg:space-x-10">
+                                <Link
+                                    to={`/`}
+                                    title=""
+                                    className="text-base text-white transition-all duration-200 hover:text-opacity-80"
+                                >
+                                    Home
+                                </Link>
+                                <Link
+                                    to={`/alltoys`}
+                                    title=""
+                                    className="text-base text-white transition-all duration-200 hover:text-opacity-80"
+                                >
+                                    All toys
+                                </Link>
+                                <Link
+                                    to={`/standard/blog`}
+                                    title=""
+                                    className="text-base text-white transition-all duration-200 hover:text-opacity-80"
+                                >
+                                    Blog
+                                </Link>
+                                <Link
+                                    to={`/standard/about`}
+                                    title=""
+                                    className="text-base text-white transition-all duration-200 hover:text-opacity-80"
+                                >
+                                    About us
+                                </Link>
+                            </div>
+                            <div className="lg:flex lg:items-center lg:justify-end lg:space-x-6 sm:ml-auto">
+                                <Link
+                                    to={`/standard/signin`}
+                                    title=""
+                                    className="hidden text-base text-white transition-all duration-200 lg:inline-flex hover:text-opacity-80"
+                                >
+                                    Sign In
+                                </Link>
+                                <Link
+                                    to={`/standard/signup`}
+                                    title=""
+                                    className="inline-flex items-center justify-center px-3 sm:px-5 py-2.5 text-sm sm:text-base font-semibold transition-all duration-200 text-white bg-white/20 hover:bg-white/40 focus:bg-white/40 rounded-lg"
+                                    role="button"
+                                >
+                                    Join
+                                </Link>
+                            </div>
+                            <button
+                                type="button"
+                                className="inline-flex p-2 ml-1 text-gray-800 transition-all duration-200 rounded-md sm:ml-4 lg:hidden focus:bg-gray-800 hover:bg-gray-800"
+                                onClick={toggleMenu}
+                            >
+                                {/* Menu open: "hidden", Menu closed: "block" */}
+                                <svg
+                                    className={`block w-6 h-6 ${isMenuOpen ? 'hidden' : ''}`}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                                </svg>
+                                {/* Menu open: "block", Menu closed: "hidden" */}
+                                <svg
+                                    className={`w-6 h-6 ${isMenuOpen ? '' : 'hidden'}`}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    {/* Mobile menu */}
+                    <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-white`}>
+                        <Link href="#" title="" className="block text-gray-800 py-2 px-4 hover:bg-gray-200">
+                            Features
+                        </Link>
+                        <Link href="#" title="" className="block text-gray-800 py-2 px-4 hover:bg-gray-200">
+                            Solutions
+                        </Link>
+                        <Link href="#" title="" className="block text-gray-800 py-2 px-4 hover:bg-gray-200">
+                            Resources
+                        </Link>
+                        <Link href="#" title="" className="block text-gray-800 py-2 px-4 hover:bg-gray-200">
+                            Pricing
+                        </Link>
+                    </div>
+                </header>
             </div>
-            <MobileNav open={isNavOpen} className="overflow-scroll">
-                <NavList />
-            </MobileNav>
-        </Navbar>
+
+        </div>
     );
-}
+};
+
+export default Header;
