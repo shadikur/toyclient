@@ -3,7 +3,7 @@ import React from 'react';
 const Hero = () => {
     return (
         <div>
-            <section className="relative lg:min-h-[1000px] pt-24 pb-10 sm:pt-32 sm:pb-16 lg:pb-24">
+            <section className="relative lg:min-h-[1000px] pt-24 pb-10 sm:pt-32 sm:pb-16 lg:pb-24 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200 via-purple-400 to-purple-800">
                 <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8  z-20">
                     <div className="max-w-xl mx-auto text-center">
                         <h1 className="text-4xl font-bold sm:text-6xl">
@@ -172,6 +172,7 @@ const Hero = () => {
                 </div>
 
             </section>
+
         </div>
     );
 };

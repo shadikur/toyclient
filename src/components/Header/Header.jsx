@@ -9,7 +9,7 @@ const Header = () => {
     };
     return (
         <div>
-            <div className="bg-gradient-to-bl from-purple-400 via-purple-800 to-violet-200">
+            <div className="bg-purple-950">
                 <header className="sticky inset-x-0 top-0 z-10 w-full">
                     <div className="px-4 mx-auto sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16 lg:h-20">
