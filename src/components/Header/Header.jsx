@@ -13,11 +13,11 @@ const Header = () => {
                 <header className="sticky inset-x-0 top-0 z-10 w-full">
                     <div className="px-4 mx-auto sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16 lg:h-20">
-                            <div className="flex-shrink-0">
+                            <div className="flex-shrink-0 mr-3">
                                 <Link to={`/`} title="" className="flex">
                                     <img
                                         className="w-auto h-8"
-                                        src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/5/logo.svg"
+                                        src="https://res.cloudinary.com/ddez9nchs/image/upload/v1684518608/Robotoys/white.png"
                                         alt=""
                                     />
                                 </Link>
@@ -71,7 +71,7 @@ const Header = () => {
                             </div>
                             <button
                                 type="button"
-                                className="inline-flex p-2 ml-1 text-gray-800 transition-all duration-200 rounded-md sm:ml-4 lg:hidden focus:bg-gray-800 hover:bg-gray-800"
+                                className="inline-flex p-2 ml-1 text-white transition-all duration-200 rounded-md sm:ml-4 lg:hidden focus:bg-purple-700 hover:bg-purple-700"
                                 onClick={toggleMenu}
                             >
                                 {/* Menu open: "hidden", Menu closed: "block" */}

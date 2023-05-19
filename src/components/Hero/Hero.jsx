@@ -1,9 +1,12 @@
 import React from 'react';
+import { FaTeamspeak } from 'react-icons/fa';
+import { MdOutlineLocalPostOffice } from 'react-icons/md'
+import { TbMoneybag } from 'react-icons/tb'
 
 const Hero = () => {
     return (
         <div>
-            <section className="relative lg:min-h-[1000px] pt-24 pb-10 sm:pt-32 sm:pb-16 lg:pb-24 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200 via-purple-400 to-purple-800">
+            <section className="relative lg:min-h-[80vh] pt-24 pb-10 sm:pt-32 sm:pb-16 lg:pb-24 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200 via-purple-400 to-purple-800">
                 <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8  z-20">
                     <div className="max-w-xl mx-auto text-center">
                         <h1 className="text-4xl font-bold sm:text-6xl">
@@ -158,21 +161,30 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-                <div className="inset-x-0 bottom-0 z-10 hidden lg:flex">
-                    <img
-                        className="hidden w-full lg:block"
-                        src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/5/credit-cards.png"
-                        alt=""
-                    />
-                    <img
-                        className="block w-full lg:hidden"
-                        src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/5/credit-cards-mobile.png"
-                        alt=""
-                    />
+                <div className='bg-purple-950 border rounded-2xl w-[70vw] mx-auto flex space-x-9 justify-center p-7 relative -bottom-36 text-white'>
+                    <div className='flex justify-center items-center gap-4'>
+                        <FaTeamspeak className='text-5xl'></FaTeamspeak>
+                        <div>
+                            <h2 className='text-2xl'>24/7 Customer Support</h2>
+                            <p className='text-xl'>We are always ready to help you</p>
+                        </div>
+                    </div>
+                    <div className='flex justify-center items-center gap-4'>
+                        <MdOutlineLocalPostOffice className='text-5xl'></MdOutlineLocalPostOffice>
+                        <div>
+                            <h2 className='text-2xl'>Free shipping</h2>
+                            <p className='text-xl'>Free shipping on all orders</p>
+                        </div>
+                    </div>
+                    <div className='flex justify-center items-center gap-4'>
+                        <TbMoneybag className='text-5xl'></TbMoneybag>
+                        <div>
+                            <h2 className='text-2xl'>Money back guarantee</h2>
+                            <p className='text-xl'>We provide 30 days moneyback</p>
+                        </div>
+                    </div>
                 </div>
-
             </section>
-
         </div>
     );
 };

@@ -9,7 +9,7 @@ const Footer = () => {
                         <div className="col-span-2 md:col-span-4 xl:pr-8">
                             <img
                                 className="w-auto h-9"
-                                src="https://cdn.rareblocks.xyz/collection/celebration/images/logo.svg"
+                                src="https://res.cloudinary.com/ddez9nchs/image/upload/v1684518608/Robotoys/color.png"
                                 alt=""
                             />
                             <p className="text-base leading-relaxed text-gray-600 mt-7">
