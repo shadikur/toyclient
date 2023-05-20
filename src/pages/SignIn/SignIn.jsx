@@ -1,8 +1,54 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import { AppContext } from '../../context/ContextProvider';
 
 const SignIn = () => {
+    const { GoogleSignIn, signIn, mapAuthCodeToMessage, setLoading } = useContext(AppContext);
+    const [error, setError] = useState([]);
+    const navigate = useNavigate();
+
+    // Standard Signin
+    const handleSignIn = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = event.email.value;
+        const password = event.password.value;
+
+
+    }
+
+    // Google Signin
+    const handleGoogleLogin = () => {
+        GoogleSignIn().then(
+            result => {
+                Swal.fire(
+                    {
+                        icon: 'success',
+                        text: 'Account created!',
+                        footer: 'We are taking you to homepage in a moment ....'
+                    }
+                )
+                setTimeout(
+                    () => {
+                        navigate('/')
+                    }, 2000
+                );
+            }
+        )
+            .catch(
+                error => {
+                    const errorMessage = mapAuthCodeToMessage(error.code);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: errorMessage,
+                    })
+                }
+            )
+    }
+
     return (
         <div>
             <DynamicTitle
@@ -23,7 +69,7 @@ const SignIn = () => {
                             <div className="text-center">
                                 <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
                                 <p className="mt-2 text-base text-gray-600">
-                                    Don’t have one?{" "}
+                                    Don’t have one?
                                     <Link
                                         to={`/standard/signup`}
                                         title=""
@@ -33,7 +79,7 @@ const SignIn = () => {
                                     </Link>
                                 </p>
                             </div>
-                            <form action="#" method="POST" className="mt-8">
+                            <form className="mt-8">
                                 <div className="space-y-5">
                                     <div>
                                         <label htmlFor="" className="text-base font-medium text-gray-900">

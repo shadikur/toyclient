@@ -1,21 +1,14 @@
 import React, { useContext, useState } from 'react';
 import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
+import Swal from 'sweetalert2';
+
 
 const SignUp = () => {
-    const { GoogleSignIn, signUp } = useContext(AppContext);
-    const [error, setError] = useState('');
-
-    const passwordValidate = (password) => {
-        console.log('errro', password);
-        if (password.length < 6) {
-            setError('Password must have to 6 characters')
-        }
-        else {
-            setError('');
-        }
-    }
+    const { GoogleSignIn, signUp, mapAuthCodeToMessage, setLoading } = useContext(AppContext);
+    const [error, setError] = useState([]);
+    const navigate = useNavigate();
     const handleSignUp = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -24,22 +17,61 @@ const SignUp = () => {
         const password = form.password.value;
         const photo = form.photo.value;
         console.log(name, email, password, photo);
-        passwordValidate(password);
+        setLoading(true);
         signUp(email, password)
             .then(result => {
-                console.log(result)
+                Swal.fire(
+                    {
+                        icon: 'success',
+                        text: 'Account created!',
+                        footer: 'We are taking you to homepage in a moment ....',
+                        timer: 2000
+                    }
+                )
+                setTimeout(
+                    () => {
+                        navigate('/')
+                    }, 2000
+                );
+                setLoading(false);
             })
             .catch(error => {
-                console.log(error);
+                const errorMessage = mapAuthCodeToMessage(error.code)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: errorMessage,
+                })
+                setError(errorMessage);
             })
     }
 
     const handleGoogleLogin = () => {
         GoogleSignIn().then(
-            (result) => console.log(result)
+            result => {
+                Swal.fire(
+                    {
+                        icon: 'success',
+                        text: 'Account created!',
+                        footer: 'We are taking you to homepage in a moment ....'
+                    }
+                )
+                setTimeout(
+                    () => {
+                        navigate('/')
+                    }, 2000
+                );
+            }
         )
             .catch(
-                (error) => console.log(error)
+                error => {
+                    const errorMessage = mapAuthCodeToMessage(error.code);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: errorMessage,
+                    })
+                }
             )
     }
     return (
@@ -115,12 +147,11 @@ const SignUp = () => {
                                                 name="password"
                                                 id="password"
                                                 placeholder="Enter your password"
-                                                onSubmit={passwordValidate}
                                                 className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                                                 required
                                             />
                                         </div>
-                                        {error && <p className='text-red-700'> {error} </p>}
+
                                     </div>
                                     <div>
                                         <label htmlFor="" className="text-base font-medium text-gray-900">
@@ -136,6 +167,7 @@ const SignUp = () => {
                                             />
                                         </div>
                                     </div>
+                                    {error && <p className='text-red-700'> {error} </p>}
                                     <div>
                                         <button
                                             type="submit"

@@ -50,13 +50,34 @@ const ContextProvider = ({ children }) => {
         };
     }, []);
 
+
+
+    const mapAuthCodeToMessage = (authCode) => {
+        switch (authCode) {
+            case "auth/invalid-password":
+                return "Password provided is not corrected";
+
+            case "auth/invalid-email":
+                return "Email provided is invalid";
+            case "auth/weak-password":
+                return "Weak password (Min. 6 Chars Required)";
+            case "auth/email-already-in-use":
+                return "Email already in use!"
+            default:
+                return "";
+        }
+    }
+
+
     const contextData = {
         user,
         loading,
+        setLoading,
         signIn,
         signUp,
         GoogleSignIn,
-        logOut
+        logOut,
+        mapAuthCodeToMessage
     }
 
     return (
