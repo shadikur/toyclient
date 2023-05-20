@@ -40,13 +40,13 @@ const ContextProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-            setUser(loggedUser);
+        const offLoad = onAuthStateChanged(auth, (currentlyLogged) => {
+            setUser(currentlyLogged);
             setLoading(false);
         });
 
         return () => {
-            unsubscribe();
+            offLoad();
         };
     }, []);
 
