@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 
 const SignUp = () => {
-    const { GoogleSignIn, signUp, mapAuthCodeToMessage, setLoading } = useContext(AppContext);
+    const { GoogleSignIn, signUp, mapAuthCodeToMessage, setLoading, profileUpdate } = useContext(AppContext);
     const [error, setError] = useState([]);
     const navigate = useNavigate();
     const handleSignUp = (event) => {
@@ -33,6 +33,7 @@ const SignUp = () => {
                         navigate('/', { replace: true })
                     }, 2000
                 );
+                profileUpdate(name, photo);
                 setLoading(false);
             })
             .catch(error => {

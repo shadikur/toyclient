@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../components/Header/Header';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
-import KeenSlider from '../components/KeenSlider/KeenSlider';
 import SideBar from '../components/SideBar/SideBar';
 import Sticky from 'react-stickynode';
 
@@ -12,7 +11,7 @@ const AllToysLayout = () => {
             <Sticky enabled={true} bottomBoundary={1200}>
                 <Header></Header>
             </Sticky>
-            {/* <KeenSlider subtitle={'All Toys'}></KeenSlider> */}
+
             <div className="grid grid-cols-12 p-5">
                 <div className="col-span-3 bg-red-800">
                     <SideBar></SideBar>

@@ -110,21 +110,23 @@ const Header = () => {
                                                 </div>
                                             </div>
                                             <div className="dropdown dropdown-end">
-                                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar flex text-white items-center justify-items-center">
-                                                    <div className="w-10 rounded-full">
-                                                        {
-                                                            user?.photoURL ?
-                                                                <img src={user?.photoURL} /> : (<CgProfile className='text-white text-3xl mt-1'></CgProfile>)
+                                                <div className='flex flex-col items-center text-center'>
+                                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar text-white w-24">
+                                                        <div className="w-10 rounded-full">
+                                                            {
+                                                                user?.photoURL ?
+                                                                    <img src={user?.photoURL} /> : (<CgProfile className='text-white text-3xl mt-1'></CgProfile>)
 
-                                                        }
-                                                    </div>
-                                                    <div>
+                                                            }
+                                                        </div>
+                                                    </label>
+                                                    <div className='text-white'>
                                                         {
                                                             user?.displayName ?
                                                                 <h2>{user?.displayName.split(" ")[0]}</h2> : <h2>User</h2>
                                                         }
                                                     </div>
-                                                </label>
+                                                </div>
                                                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                                     <li>
                                                         <Link to={`/dashboard/updateprofile`} className="justify-between">

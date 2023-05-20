@@ -8,6 +8,7 @@ import {
     onAuthStateChanged,
     GoogleAuthProvider,
     signInWithPopup,
+    updateProfile,
 } from "firebase/auth";
 
 export const AppContext = createContext(null);
@@ -50,7 +51,13 @@ const ContextProvider = ({ children }) => {
         };
     }, []);
 
-
+    const profileUpdate = (displayName, photoURL) => {
+        setLoading(true);
+        return updateProfile(auth.currentUser, {
+            displayName,
+            photoURL,
+        });
+    };
 
     const mapAuthCodeToMessage = (authCode) => {
         switch (authCode) {
@@ -80,7 +87,8 @@ const ContextProvider = ({ children }) => {
         signUp,
         GoogleSignIn,
         logOut,
-        mapAuthCodeToMessage
+        mapAuthCodeToMessage,
+        profileUpdate
     }
 
     return (
