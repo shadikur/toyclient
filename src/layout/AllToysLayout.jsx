@@ -2,15 +2,17 @@ import React from 'react';
 import Header from '../components/Header/Header';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
+import KeenSlider from '../components/KeenSlider/KeenSlider';
 
-const AllToysPages = () => {
+const AllToysLayout = () => {
     return (
         <div>
             <Header></Header>
+            <KeenSlider></KeenSlider>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
     );
 };
 
-export default AllToysPages;
+export default AllToysLayout;

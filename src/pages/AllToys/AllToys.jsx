@@ -1,5 +1,5 @@
 import React from 'react';
-import DynamicTitle from '../../DynamicTitle/DynamicTitle';
+import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
 
 const AllToys = () => {
     return (

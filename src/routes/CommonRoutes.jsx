@@ -11,11 +11,11 @@ import AddToys from '../pages/AddToys/AddToys';
 import ManageListing from '../pages/ManageListing/ManageListing';
 import StandardPages from '../layout/StandardPages';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
-import AllToysPages from '../layout/AllToysPages';
 import DashLayout from '../layout/DashLayout';
 import About from '../pages/About/About';
 import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/SignUp/SignUp';
+import AllToysLayout from '../layout/AllToysLayout';
 
 
 const CommonRoutes = createBrowserRouter([
@@ -63,8 +63,8 @@ const CommonRoutes = createBrowserRouter([
     },
     {
         path: "/alltoys",
-        element: <AllToysPages></AllToysPages>,
-        errorElement: <ErrorPage></ErrorPage>,
+        element: <AllToysLayout></AllToysLayout>,
+        errorElement: < ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/alltoys",

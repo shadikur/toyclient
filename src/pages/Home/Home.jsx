@@ -3,8 +3,8 @@ import Hero from '../../components/Hero/Hero';
 import HomeSecOne from '../../components/Sections/HomeSecOne';
 import Pricing from '../../components/Sections/Pricing';
 import TrustedBy from '../../components/Sections/TrustedBy';
-import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 import ItemsByCategory from '../../components/Sections/ItemsByCategory';
+import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
 
 const Home = () => {
     return (
