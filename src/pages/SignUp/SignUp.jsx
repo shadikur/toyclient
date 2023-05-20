@@ -30,7 +30,7 @@ const SignUp = () => {
                 )
                 setTimeout(
                     () => {
-                        navigate('/')
+                        navigate('/', { replace: true })
                     }, 2000
                 );
                 setLoading(false);
@@ -58,7 +58,7 @@ const SignUp = () => {
                 )
                 setTimeout(
                     () => {
-                        navigate('/')
+                        navigate('/', { replace: true })
                     }, 2000
                 );
             }

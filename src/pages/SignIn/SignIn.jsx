@@ -1,22 +1,45 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { AppContext } from '../../context/ContextProvider';
 
 const SignIn = () => {
     const { GoogleSignIn, signIn, mapAuthCodeToMessage, setLoading } = useContext(AppContext);
-    const [error, setError] = useState([]);
     const navigate = useNavigate();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
 
     // Standard Signin
     const handleSignIn = (event) => {
         event.preventDefault();
         const form = event.target;
-        const email = event.email.value;
-        const password = event.password.value;
-
-
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+            .then(result => {
+                Swal.fire(
+                    {
+                        icon: 'success',
+                        text: 'Successfully logged in!',
+                        footer: from ? 'We are taking you to homepage in a moment ....' : 'Taking you back to the page you wanted to visit'
+                    }
+                )
+                setTimeout(
+                    () => {
+                        navigate(from, { replace: true })
+                    }, 2000
+                );
+            })
+            .catch(error => {
+                console.log(error);
+                const errorMessage = mapAuthCodeToMessage(error.code);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: errorMessage,
+                })
+            })
     }
 
     // Google Signin
@@ -26,13 +49,13 @@ const SignIn = () => {
                 Swal.fire(
                     {
                         icon: 'success',
-                        text: 'Account created!',
-                        footer: 'We are taking you to homepage in a moment ....'
+                        text: 'Successfully logged in!',
+                        footer: from ? 'We are taking you to homepage in a moment ....' : 'Taking you back to the page you wanted to visit'
                     }
                 )
                 setTimeout(
                     () => {
-                        navigate('/')
+                        navigate(from, { replace: true })
                     }, 2000
                 );
             }
@@ -79,20 +102,20 @@ const SignIn = () => {
                                     </Link>
                                 </p>
                             </div>
-                            <form className="mt-8">
+                            <form className="mt-8" onSubmit={handleSignIn}>
                                 <div className="space-y-5">
                                     <div>
                                         <label htmlFor="" className="text-base font-medium text-gray-900">
-                                            {" "}
-                                            Email address{" "}
+                                            Email address
                                         </label>
                                         <div className="mt-2.5">
                                             <input
                                                 type="email"
-                                                name=""
-                                                id=""
+                                                name="email"
+                                                id="email"
                                                 placeholder="Enter email to get started"
                                                 className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -102,23 +125,22 @@ const SignIn = () => {
                                                 htmlFor=""
                                                 className="text-base font-medium text-gray-900"
                                             >
-                                                {" "}
-                                                Password{" "}
+                                                Password
                                             </label>
                                             <Link
                                                 to={`/standard/forget-pass`}
                                                 title=""
                                                 className="text-sm font-medium transition-all duration-200 text-rose-500 hover:text-rose-600 focus:text-rose-600 hover:underline"
+                                                required
                                             >
-                                                {" "}
-                                                Forgot password?{" "}
+                                                Forgot password?
                                             </Link>
                                         </div>
                                         <div className="mt-2.5">
                                             <input
                                                 type="password"
-                                                name=""
-                                                id=""
+                                                name="password"
+                                                id="password"
                                                 placeholder="Enter your password"
                                                 className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                                             />
@@ -135,6 +157,7 @@ const SignIn = () => {
                                     <div>
                                         <button
                                             type="button"
+                                            onClick={handleGoogleLogin}
                                             className="
                               relative
                               inline-flex

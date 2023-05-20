@@ -56,15 +56,18 @@ const ContextProvider = ({ children }) => {
         switch (authCode) {
             case "auth/invalid-password":
                 return "Password provided is not corrected";
-
             case "auth/invalid-email":
                 return "Email provided is invalid";
             case "auth/weak-password":
                 return "Weak password (Min. 6 Chars Required)";
             case "auth/email-already-in-use":
                 return "Email already in use!"
+            case "auth/user-not-found":
+                return "Account does not exist! Please signup."
+            case "auth/wrong-password":
+                return "Wrong password!"
             default:
-                return "";
+                return "Something wrong! Please try again.";
         }
     }
 
