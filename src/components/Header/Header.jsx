@@ -69,7 +69,25 @@ const Header = () => {
                                 >
                                     About us
                                 </Link>
+                                {
 
+                                    user ? <>
+                                        <Link
+                                            to={`/standard/addtoys`}
+                                            title=""
+                                            className="text-base text-white transition-all duration-200 hover:text-opacity-80"
+                                        >
+                                            Add Toys
+                                        </Link>
+                                        <Link
+                                            to={`/standard/mytoys`}
+                                            title=""
+                                            className="text-base text-white transition-all duration-200 hover:text-opacity-80"
+                                        >
+                                            My Toys
+                                        </Link>
+                                    </> : ''
+                                }
                             </div>
                             <div className="lg:flex lg:items-center lg:justify-end lg:space-x-6 sm:ml-auto">
                                 {
@@ -92,11 +110,18 @@ const Header = () => {
                                                 </div>
                                             </div>
                                             <div className="dropdown dropdown-end">
-                                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar flex text-white items-center justify-items-center">
                                                     <div className="w-10 rounded-full">
                                                         {
                                                             user?.photoURL ?
                                                                 <img src={user?.photoURL} /> : (<CgProfile className='text-white text-3xl mt-1'></CgProfile>)
+
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        {
+                                                            user?.displayName ?
+                                                                <h2>{user?.displayName.split(" ")[0]}</h2> : <h2>User</h2>
                                                         }
                                                     </div>
                                                 </label>
