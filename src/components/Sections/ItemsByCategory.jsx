@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 const ItemsByCategory = () => {
+    const [active, setActive] = useState(0);
     return (
         <div>
             <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
@@ -21,14 +22,14 @@ const ItemsByCategory = () => {
                             sint. Velit officia consequat duis enim velit mollit.
                         </p>
                     </div>
-                    <div className="mt-10 text-purple-950 text-center text-3xl ">
+                    <div className="mt-10 text-purple-950 text-3xl ">
 
-                        <Tabs>
-                            <TabList className={`font-bold`}>
-                                <Tab>Tin Toy Robots</Tab>
-                                <Tab>R.O.B</Tab>
-                                <Tab>Armtron</Tab>
-                                <Tab>Cubelets</Tab>
+                        <Tabs className={`flex flex-col items-center`}>
+                            <TabList className="tabs">
+                                <Tab className={`tab tab-bordered ${active === 1 ? 'tab-active' : ''}`} onClick={() => setActive(1)}>Tin Toy Robots</Tab>
+                                <Tab className={`tab tab-bordered ${active === 2 ? 'tab-active' : ''}`} onClick={() => setActive(2)}>R.O.B</Tab>
+                                <Tab className={`tab tab-bordered ${active === 3 ? 'tab-active' : ''}`} onClick={() => setActive(3)}>Armtron</Tab>
+                                <Tab className={`tab tab-bordered ${active === 4 ? 'tab-active' : ''}`} onClick={() => setActive(4)}>Cubelets</Tab>
                             </TabList>
 
                             <TabPanel>

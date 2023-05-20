@@ -10,8 +10,7 @@ const Home = () => {
     return (
         <div>
             <DynamicTitle
-                subtitle={`Test template`}
-                description={`Test Description`}>
+                subtitle={`Test template`}>
             </DynamicTitle>
             <Hero></Hero>
             <ItemsByCategory></ItemsByCategory>

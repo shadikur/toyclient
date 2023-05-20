@@ -4,7 +4,7 @@ import DynamicTitle from '../../DynamicTitle/DynamicTitle';
 const AllToys = () => {
     return (
         <div>
-            <DynamicTitle subtitle={`test`}></DynamicTitle>
+            <DynamicTitle subtitle={`All Toys`}></DynamicTitle>
         </div>
     );
 };
