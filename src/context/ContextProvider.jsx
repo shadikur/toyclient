@@ -10,7 +10,7 @@ import {
     signInWithPopup,
 } from "firebase/auth";
 
-const AppContext = createContext(null);
+export const AppContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
@@ -29,7 +29,7 @@ const ContextProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     };
 
-    const handleGoogleSignIn = () => {
+    const GoogleSignIn = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider);
     };
@@ -55,7 +55,7 @@ const ContextProvider = ({ children }) => {
         loading,
         signIn,
         signUp,
-        handleGoogleSignIn,
+        GoogleSignIn,
         logOut
     }
 

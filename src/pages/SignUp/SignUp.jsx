@@ -1,8 +1,47 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
 import { Link } from 'react-router-dom';
+import { AppContext } from '../../context/ContextProvider';
 
 const SignUp = () => {
+    const { GoogleSignIn, signUp } = useContext(AppContext);
+    const [error, setError] = useState('');
+
+    const passwordValidate = (password) => {
+        console.log('errro', password);
+        if (password.length < 6) {
+            setError('Password must have to 6 characters')
+        }
+        else {
+            setError('');
+        }
+    }
+    const handleSignUp = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photo = form.photo.value;
+        console.log(name, email, password, photo);
+        passwordValidate(password);
+        signUp(email, password)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleGoogleLogin = () => {
+        GoogleSignIn().then(
+            (result) => console.log(result)
+        )
+            .catch(
+                (error) => console.log(error)
+            )
+    }
     return (
         <div>
             <DynamicTitle
@@ -35,18 +74,17 @@ const SignUp = () => {
                                     </Link>
                                 </p>
                             </div>
-                            <form action="#" method="POST" className="mt-8">
+                            <form onSubmit={handleSignUp} className="mt-8">
                                 <div className="space-y-5">
                                     <div>
                                         <label htmlFor="" className="text-base font-medium text-gray-900">
-                                            {" "}
-                                            First &amp; Last name{" "}
+                                            First &amp; Last name
                                         </label>
                                         <div className="mt-2.5">
                                             <input
                                                 type="text"
-                                                name=""
-                                                id=""
+                                                name="name"
+                                                id="name"
                                                 placeholder="Enter your full name"
                                                 className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                                             />
@@ -54,30 +92,46 @@ const SignUp = () => {
                                     </div>
                                     <div>
                                         <label htmlFor="" className="text-base font-medium text-gray-900">
-                                            {" "}
-                                            Email address{" "}
+                                            Email address
                                         </label>
                                         <div className="mt-2.5">
                                             <input
                                                 type="email"
-                                                name=""
-                                                id=""
+                                                name="email"
+                                                id="email"
                                                 placeholder="Enter email to get started"
                                                 className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                                                required
                                             />
                                         </div>
                                     </div>
                                     <div>
                                         <label htmlFor="" className="text-base font-medium text-gray-900">
-                                            {" "}
-                                            Password{" "}
+                                            Password
                                         </label>
                                         <div className="mt-2.5">
                                             <input
                                                 type="password"
-                                                name=""
-                                                id=""
+                                                name="password"
+                                                id="password"
                                                 placeholder="Enter your password"
+                                                onSubmit={passwordValidate}
+                                                className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                                                required
+                                            />
+                                        </div>
+                                        {error && <p className='text-red-700'> {error} </p>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor="" className="text-base font-medium text-gray-900">
+                                            Photo URL
+                                        </label>
+                                        <div className="mt-2.5">
+                                            <input
+                                                type="text"
+                                                name="photo"
+                                                id="photo"
+                                                placeholder="Enter photo URL"
                                                 className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                                             />
                                         </div>
@@ -93,6 +147,7 @@ const SignUp = () => {
                                     <div>
                                         <button
                                             type="button"
+                                            onClick={handleGoogleLogin}
                                             className="
                               relative
                               inline-flex
