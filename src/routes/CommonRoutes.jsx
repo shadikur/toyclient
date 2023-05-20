@@ -17,6 +17,7 @@ import SignUp from '../pages/SignUp/SignUp';
 import AllToysLayout from '../layout/AllToysLayout';
 import Home from '../pages/Home/Home';
 import ForgetPass from '../pages/ForgetPass/ForgetPass';
+import ProtectedRoutes from './ProtectedRoutes';
 
 
 const CommonRoutes = createBrowserRouter([
@@ -42,11 +43,11 @@ const CommonRoutes = createBrowserRouter([
             },
             {
                 path: "/standard/mytoys",
-                element: <MyToys></MyToys>
+                element: <ProtectedRoutes><MyToys></MyToys></ProtectedRoutes>
             },
             {
                 path: "/standard/addtoys",
-                element: <AddToys></AddToys>
+                element: <ProtectedRoutes><AddToys></AddToys></ProtectedRoutes>
             },
             {
                 path: "/standard/about",
@@ -80,7 +81,7 @@ const CommonRoutes = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashLayout></DashLayout>,
+        element: <ProtectedRoutes><DashLayout></DashLayout></ProtectedRoutes>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
