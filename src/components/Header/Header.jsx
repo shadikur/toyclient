@@ -28,7 +28,7 @@ const Header = () => {
     return (
         <div>
             <div className="bg-purple-950">
-                <header className="sticky inset-x-0 top-0 z-10 w-full">
+                <header className="top-0 w-full">
                     <div className="px-4 mx-auto sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16 lg:h-20">
                             <div className="flex-shrink-0 mr-3">

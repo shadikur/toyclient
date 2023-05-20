@@ -1,15 +1,14 @@
 import React from 'react';
 import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
 
-const MyToys = () => {
+const WishList = () => {
     return (
         <div>
             <DynamicTitle
-                subtitle={`My Toys - All your listed items`}>
+                subtitle={`Wish List - The items you would love to buy`}>
             </DynamicTitle>
-
         </div>
     );
 };
 
-export default MyToys;
+export default WishList;
