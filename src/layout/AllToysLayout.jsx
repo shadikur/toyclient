@@ -8,7 +8,7 @@ const AllToysLayout = () => {
     return (
         <div>
             <Header></Header>
-            <KeenSlider></KeenSlider>
+            <KeenSlider subtitle={'All Toys'}></KeenSlider>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
