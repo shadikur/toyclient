@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import LandingPages from '../layout/LandingPages';
-import Home from '../pages/Home/Home';
 import AllToys from '../pages/AllToys/AllToys';
 import Blog from '../pages/Blog/Blog';
 import Dashboard from '../pages/Dashboard/Dashboard';
@@ -16,6 +15,8 @@ import About from '../pages/About/About';
 import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/SignUp/SignUp';
 import AllToysLayout from '../layout/AllToysLayout';
+import Home from '../pages/Home/Home';
+import ForgetPass from '../pages/ForgetPass/ForgetPass';
 
 
 const CommonRoutes = createBrowserRouter([
@@ -58,6 +59,10 @@ const CommonRoutes = createBrowserRouter([
             {
                 path: "/standard/signup",
                 element: <SignUp></SignUp>
+            },
+            {
+                path: "/standard/forget-pass",
+                element: <ForgetPass></ForgetPass>
             }
         ]
     },

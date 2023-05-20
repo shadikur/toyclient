@@ -20,7 +20,7 @@ const KeenSlider = ({ subtitle }) => {
                     if (mouseOver) return
                     timeout = setTimeout(() => {
                         slider.next()
-                    }, 3000)
+                    }, 5000)
                 }
                 slider.on("created", () => {
                     slider.container.addEventListener("mouseover", () => {

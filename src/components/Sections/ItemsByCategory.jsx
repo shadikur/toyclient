@@ -48,7 +48,6 @@ const ItemsByCategory = () => {
                     </div>
                 </div>
             </section>
-
         </div>
     );
 };

@@ -1,13 +1,18 @@
 import React from 'react';
+import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     return (
         <div>
+            <DynamicTitle
+                subtitle={`Join - Create an account and explore`}>
+            </DynamicTitle>
             <section className="relative py-10 bg-gray-900 sm:py-16 lg:py-24">
                 <div className="absolute inset-0">
                     <img
                         className="object-cover w-full h-full"
-                        src="https://cdn.rareblocks.xyz/collection/celebration/images/signup/2/woman-working-laptop.jpg"
+                        src="https://res.cloudinary.com/ddez9nchs/image/upload/v1684579372/Robotoys/3-min.jpg"
                         alt=""
                     />
                 </div>
@@ -20,14 +25,14 @@ const SignUp = () => {
                                     Create an account
                                 </h2>
                                 <p className="mt-2 text-base text-gray-600">
-                                    Already joined?{" "}
-                                    <a
-                                        href="#"
+                                    Already joined?
+                                    <Link
+                                        to={`/standard/signin`}
                                         title=""
                                         className="text-blue-600 transition-all duration-200 hover:underline hover:text-blue-700"
                                     >
                                         Sign in now
-                                    </a>
+                                    </Link>
                                 </p>
                             </div>
                             <form action="#" method="POST" className="mt-8">
