@@ -2,9 +2,41 @@ import React, { useContext } from 'react';
 import './SingleToy.css'
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
+import Swal from 'sweetalert2'
+
 
 const SingleToy = ({ toy }) => {
     const { parseCategory } = useContext(AppContext);
+    const handleDelete = () => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:4750/toys/${toy._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                        window.location.reload();
+                    })
+
+            }
+        })
+
+    }
+
     return (
 
         <tr>
@@ -25,6 +57,8 @@ const SingleToy = ({ toy }) => {
             </td>
             <td>
                 <Link to={`/standard/details/${toy._id}`} className='btn btn-active btn-secondary'>View Details</Link>
+                <br />
+                <button className='btn btn-warning' onClick={handleDelete}>Delete (Your listing)</button>
             </td>
         </tr>
     );

@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { AppContext } from '../../context/ContextProvider';
 import { FaEbay, FaAmazon } from 'react-icons/fa'
 import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
+import Swal from 'sweetalert2'
+
 
 const AddToys = () => {
     const { user } = useContext(AppContext);
@@ -33,7 +35,6 @@ const AddToys = () => {
             ebay,
             description
         }
-        console.log(toydata);
         fetch('http://localhost:4750/addtoys', {
             method: 'POST',
             headers: {
@@ -42,7 +43,15 @@ const AddToys = () => {
             body: JSON.stringify(toydata)
         })
             .then(res => res.json())
-            .then(data => console.log(data));
+            .then(data => {
+                if (data.acknowledged) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Item added successfully',
+                        text: 'Awesome, your item has been listed on our marketplace',
+                    })
+                }
+            });
     }
     return (
         <div>

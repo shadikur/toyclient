@@ -2,14 +2,16 @@ import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
 import { FaRegHeart, FaEbay, FaAmazon } from 'react-icons/fa'
+import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
 
 const ToyDetails = () => {
     const toyData = useLoaderData();
     const { parseCategory } = useContext(AppContext);
-
-    console.log(toyData);
     return (
         <div>
+            <DynamicTitle
+                subtitle={`Toy Details - ${toyData.name}`}>
+            </DynamicTitle>
             <section className="py-10 bg-white sm:py-16 lg:py-24">
                 <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
                     <div className="grid items-center md:grid-cols-2 gap-y-10 md:gap-x-20">

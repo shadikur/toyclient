@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import TabContent from '../TabContent/TabContent';
+import './TabContent.css'
 
 const ItemsByCategory = () => {
     const [active, setActive] = useState(0);
@@ -21,8 +22,6 @@ const ItemsByCategory = () => {
         fetchToyData();
     }, [category]);
 
-    console.log(toyData);
-    console.log(category);
 
     return (
         <div>
@@ -46,45 +45,53 @@ const ItemsByCategory = () => {
 
                         <Tabs className={`flex flex-col items-center`}>
                             <TabList className="tabs">
-                                <Tab className={`tab tab-bordered ${active === 1 ? 'tab-active' : ''}`} onClick={() => setActive(1)}>Tin Toy Robots</Tab>
-                                <Tab className={`tab tab-bordered ${active === 2 ? 'tab-active' : ''}`} onClick={() => setActive(2)}>R.O.B</Tab>
-                                <Tab className={`tab tab-bordered ${active === 3 ? 'tab-active' : ''}`} onClick={() => setActive(3)}>Armtron</Tab>
-                                <Tab className={`tab tab-bordered ${active === 4 ? 'tab-active' : ''}`} onClick={() => setActive(4)}>Cubelets</Tab>
+                                <Tab className={`tab tab-bordered ${active === 1 ? 'tab-active' : ''}`} onClick={() => { setActive(1); setCategory('ttb') }}>Tin Toy Robots</Tab>
+                                <Tab className={`tab tab-bordered ${active === 2 ? 'tab-active' : ''}`} onClick={() => { setActive(2); setCategory('rob') }}>R.O.B</Tab>
+                                <Tab className={`tab tab-bordered ${active === 3 ? 'tab-active' : ''}`} onClick={() => { setActive(3); setCategory('armtron') }}>Armtron</Tab>
+                                <Tab className={`tab tab-bordered ${active === 4 ? 'tab-active' : ''}`} onClick={() => { setActive(4); setCategory('cubelets') }}>Cubelets</Tab>
                             </TabList>
 
                             <TabPanel>
-                                {
-                                    toyData.map(toy => {
-                                        <TabContent key={toyData._id} toy={toy}></TabContent>
-                                    })
-                                }
+                                <div className='tabcontent'>
+                                    {
+                                        toyData.map(toy =>
+                                            <TabContent key={toyData._id} toy={toy}></TabContent>
+                                        )
+                                    }
+                                </div>
                             </TabPanel>
                             <TabPanel>
-                                {
-                                    toyData.map(toy => {
-                                        <TabContent key={toyData._id} toy={toy}></TabContent>
-                                    })
-                                }
+                                <div className='tabcontent'>
+                                    {
+                                        toyData.map(toy =>
+                                            <TabContent key={toyData._id} toy={toy}></TabContent>
+                                        )
+                                    }
+                                </div>
                             </TabPanel>
                             <TabPanel>
-                                {
-                                    toyData.map(toy => {
-                                        <TabContent key={toyData._id} toy={toy}></TabContent>
-                                    })
-                                }
+                                <div className='tabcontent'>
+                                    {
+                                        toyData.map(toy =>
+                                            <TabContent key={toyData._id} toy={toy}></TabContent>
+                                        )
+                                    }
+                                </div>
                             </TabPanel>
                             <TabPanel>
-                                {
-                                    toyData.map(toy => {
-                                        <TabContent key={toyData._id} toy={toy}></TabContent>
-                                    })
-                                }
+                                <div className='tabcontent'>
+                                    {
+                                        toyData.map(toy =>
+                                            <TabContent key={toyData._id} toy={toy}></TabContent>
+                                        )
+                                    }
+                                </div>
                             </TabPanel>
                         </Tabs>
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 };
 
