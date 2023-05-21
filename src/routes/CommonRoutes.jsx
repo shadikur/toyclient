@@ -18,6 +18,7 @@ import AllToysLayout from '../layout/AllToysLayout';
 import Home from '../pages/Home/Home';
 import ForgetPass from '../pages/ForgetPass/ForgetPass';
 import ProtectedRoutes from './ProtectedRoutes';
+import ToyDetails from '../pages/ToyDetails/ToyDetails';
 
 
 const CommonRoutes = createBrowserRouter([
@@ -48,6 +49,13 @@ const CommonRoutes = createBrowserRouter([
             {
                 path: "/standard/addtoys",
                 element: <ProtectedRoutes><AddToys></AddToys></ProtectedRoutes>
+            },
+            {
+                path: "/standard/details/:id",
+                element: <ProtectedRoutes>
+                    <ToyDetails></ToyDetails>
+                </ProtectedRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:4750/toys/${params.id}`)
             },
             {
                 path: "/standard/about",
