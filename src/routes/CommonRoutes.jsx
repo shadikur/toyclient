@@ -55,7 +55,7 @@ const CommonRoutes = createBrowserRouter([
                 element: <ProtectedRoutes>
                     <ToyDetails></ToyDetails>
                 </ProtectedRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:4750/toys/${params.id}`)
+                loader: ({ params }) => fetch(`https://toyserver.vercel.app/toys/${params.id}`)
             },
             {
                 path: "/standard/about",
@@ -83,7 +83,7 @@ const CommonRoutes = createBrowserRouter([
             {
                 path: "/alltoys",
                 element: <AllToys></AllToys>,
-                loader: () => fetch("http://localhost:4750/toys")
+                loader: () => fetch("https://toyserver.vercel.app/toys")
             },
         ]
 

@@ -19,7 +19,7 @@ const SingleToy = ({ toy }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4750/toys/${toy._id}`, {
+                fetch(`https://toyserver.vercel.app/toys/${toy._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

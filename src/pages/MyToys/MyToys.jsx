@@ -9,7 +9,7 @@ const MyToys = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:4750/sellerlist/${user?.email}`)
+            fetch(`https://toyserver.vercel.app/sellerlist/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setListedToys(data);

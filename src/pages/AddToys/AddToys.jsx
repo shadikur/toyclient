@@ -35,7 +35,7 @@ const AddToys = () => {
             ebay,
             description
         }
-        fetch('http://localhost:4750/addtoys', {
+        fetch('https://toyserver.vercel.app/addtoys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

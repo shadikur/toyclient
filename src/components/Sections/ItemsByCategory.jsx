@@ -12,7 +12,7 @@ const ItemsByCategory = () => {
     useEffect(() => {
         const fetchToyData = async () => {
             try {
-                const response = await fetch(`http://localhost:4750/category/${category}/?limit=4`);
+                const response = await fetch(`https://toyserver.vercel.app/category/${category}/?limit=4`);
                 const data = await response.json();
                 setToyData(data);
             } catch (error) {
