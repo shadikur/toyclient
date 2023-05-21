@@ -14,9 +14,10 @@ const Blog = () => {
                             Questions &amp; Answers
                         </h2>
                         <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-300">
-                            Explore the common questions and answers about Celebration
+                            Answer to the questions of Assignment 11
                         </p>
                     </div>
+                    <div className="divider bg-white"></div>
                     <div className="grid grid-cols-1 mt-12 md:mt-20 md:grid-cols-2 gap-y-16 gap-x-20">
                         <div className="flex items-start">
                             <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-700 rounded-full">
@@ -24,11 +25,10 @@ const Blog = () => {
                             </div>
                             <div className="ml-4">
                                 <p className="text-xl font-semibold text-white">
-                                    How to create an account?
+                                    What is an access token and refresh token? How do they work and where should we store them on the client-side?
                                 </p>
                                 <p className="mt-4 text-base text-gray-400">
-                                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                                    sint. Velit officia consequat duis enim velit mollit.
+                                    An access token is a short-lived credential that grants a user access to protected resources or APIs, while a refresh token is a long-lived token used to obtain a new access token when the current one expires. Access tokens are typically stored securely on the client-side, such as in memory or secure cookies, while refresh tokens should be stored in a more secure manner, such as in an HTTP-only secure cookie or local storage with proper security measures.
                                 </p>
                             </div>
                         </div>
@@ -38,11 +38,10 @@ const Blog = () => {
                             </div>
                             <div className="ml-4">
                                 <p className="text-xl font-semibold text-white">
-                                    How can I make payment?
+                                    Compare SQL and NoSQL databases?
                                 </p>
                                 <p className="mt-4 text-base text-gray-400">
-                                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                                    sint. Velit officia consequat duis enim velit mollit.
+                                    SQL databases are based on a structured model with predefined schemas, enforce data integrity, and use SQL for querying. NoSQL databases are non-relational, have flexible schemas, and use various data models. SQL databases are suitable for complex relationships and ACID compliance, while NoSQL databases excel in scalability and handling unstructured data. The choice depends on specific application requirements.
                                 </p>
                             </div>
                         </div>
@@ -52,11 +51,11 @@ const Blog = () => {
                             </div>
                             <div className="ml-4">
                                 <p className="text-xl font-semibold text-white">
-                                    Do you provide discounts?
+                                    What is express js? What is Nest JS (google it)?
                                 </p>
                                 <p className="mt-4 text-base text-gray-400">
-                                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                                    sint. Velit officia consequat duis enim velit mollit.
+                                    Express.js is a minimalistic and flexible web application framework for Node.js. It provides a set of features and tools to build web applications and APIs easily. It focuses on simplicity, allowing developers to create server-side applications quickly.
+                                    NestJS is a progressive, TypeScript-based web application framework built on top of Node.js and Express.js. It follows the modular and scalable architectural patterns of Angular, making it suitable for building robust and scalable server-side applications. NestJS leverages decorators, dependency injection, and other features to simplify development and improve code organization.
                                 </p>
                             </div>
                         </div>
@@ -66,29 +65,17 @@ const Blog = () => {
                             </div>
                             <div className="ml-4">
                                 <p className="text-xl font-semibold text-white">
-                                    How do you provide support?
+                                    What is MongoDB aggregate and how does it work?
                                 </p>
                                 <p className="mt-4 text-base text-gray-400">
-                                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                                    sint. Velit officia consequat duis enim velit mollit.
+                                    MongoDBs aggregation framework is a powerful tool for performing complex data analysis and manipulation operations on the data stored in MongoDB. It allows you to perform tasks such as filtering, grouping, sorting, transforming, and combining data in a flexible and efficient manner.
+
+                                    The aggregation pipeline is the core component of MongoDBs aggregation framework. It consists of a sequence of stages, where each stage applies a specific operation to the input documents and passes the result to the next stage. The stages can be used to perform various operations like matching, projecting, grouping, sorting, and more, allowing you to perform advanced data manipulations and computations on your MongoDB data.
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-center justify-center mt-12 md:mt-20">
-                        <div className="px-8 py-4 text-center bg-gray-800 rounded-full">
-                            <p className="text-gray-50">
-                                Didn’t find the answer you are looking for?{" "}
-                                <a
-                                    href="#"
-                                    title=""
-                                    className="text-yellow-300 transition-all duration-200 hover:text-yellow-400 focus:text-yellow-400 hover:underline"
-                                >
-                                    Contact our support
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+
                 </div>
             </section>
 

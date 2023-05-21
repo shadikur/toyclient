@@ -19,6 +19,7 @@ const AllToys = () => {
         setSortData(sortedData);
     };
 
+    console.log(loadedToys);
     return (
         <div>
             <DynamicTitle subtitle={`All Toys - Get your kids found of robots`}></DynamicTitle>
