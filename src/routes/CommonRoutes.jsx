@@ -74,7 +74,8 @@ const CommonRoutes = createBrowserRouter([
         children: [
             {
                 path: "/alltoys",
-                element: <AllToys></AllToys>
+                element: <AllToys></AllToys>,
+                loader: () => fetch("http://localhost:4750/toys")
             },
         ]
 

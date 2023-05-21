@@ -11,14 +11,8 @@ const AllToysLayout = () => {
             <Sticky enabled={true} bottomBoundary={1200}>
                 <Header></Header>
             </Sticky>
-
-            <div className="grid grid-cols-12 p-5">
-                <div className="col-span-3 bg-red-800">
-                    <SideBar></SideBar>
-                </div>
-                <div className="col-span-9">
-                    <Outlet></Outlet>
-                </div>
+            <div className='container mx-auto'>
+                <Outlet></Outlet>
             </div>
             <Footer></Footer>
         </div>
