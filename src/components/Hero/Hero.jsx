@@ -13,13 +13,11 @@ const Hero = () => {
                     <div className="max-w-xl mx-auto text-center">
                         <h1 className="text-4xl font-bold sm:text-6xl">
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-white">
-                                {" "}
-                                Simplified credit cards for students{" "}
+                                Discover a World of Interactive Robot Toys
                             </span>
                         </h1>
                         <p className="mt-5 text-base text-white sm:text-xl">
-                            No more hassle taking loans and making payments. Try Postcrats credit
-                            card, make your life simple.
+                            Welcome to RoboToys! Explore our wide selection of interactive and innovative robots that will captivate and entertain kids of all ages.
                         </p>
                         <Link
                             to={`/alltoys`}

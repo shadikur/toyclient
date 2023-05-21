@@ -13,8 +13,7 @@ const Footer = () => {
                                 alt=""
                             />
                             <p className="text-base leading-relaxed text-gray-600 mt-7">
-                                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                                sint. Velit officia consequat duis enim velit mollit.
+                                RoboToy is your go-to destination for all things robot toys. We offer a wide selection of high-quality, innovative robot toys that spark imagination and provide endless entertainment for kids of all ages.
                             </p>
                             <a
                                 href="#"
@@ -174,47 +173,22 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div className="lg:col-span-2">
-                            <p className="text-base font-semibold text-gray-900">Extra Links</p>
+                            <p className="text-base font-semibold text-gray-900">Find us</p>
                             <ul className="mt-6 space-y-5">
                                 <li>
-                                    <a
-                                        href="#"
-                                        title=""
-                                        className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
-                                    >
-                                        {" "}
-                                        Customer Support{" "}
-                                    </a>
+                                    <p>
+                                        Robo Toy Inc.
+                                    </p>
                                 </li>
                                 <li>
-                                    <a
-                                        href="#"
-                                        title=""
-                                        className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
-                                    >
-                                        {" "}
-                                        Delivery Details{" "}
-                                    </a>
+                                    <p>Email: info@robotoy.com</p>
                                 </li>
                                 <li>
-                                    <a
-                                        href="#"
-                                        title=""
-                                        className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
-                                    >
-                                        {" "}
-                                        Terms &amp; Conditions{" "}
-                                    </a>
+                                    <p>Phone: +1234567890</p>
                                 </li>
                                 <li>
-                                    <a
-                                        href="#"
-                                        title=""
-                                        className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
-                                    >
-                                        {" "}
-                                        Privacy Policy{" "}
-                                    </a>
+                                    <p>Address:
+                                        Baily Road, Dhaka 1000, BD</p>
                                 </li>
                             </ul>
                         </div>
@@ -222,7 +196,7 @@ const Footer = () => {
                     <hr className="mt-16 mb-10 border-gray-200" />
                     <div className="sm:flex sm:items-center sm:justify-between">
                         <p className="text-sm text-gray-600">
-                            © Copyright 2021, All Rights Reserved by Postcraft
+                            © Copyright 2023, All Rights Reserved by Robo Toy
                         </p>
                         <ul className="flex items-center mt-5 space-x-3 md:order-3 sm:mt-0">
                             <li>

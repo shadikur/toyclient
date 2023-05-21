@@ -37,8 +37,7 @@ const ItemsByCategory = () => {
                             Explore products by category
                         </h2>
                         <p className="mt-4 text-base leading-relaxed text-gray-600">
-                            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                            sint. Velit officia consequat duis enim velit mollit.
+                            Discover a world of robotic wonders at RoboToys! Browse our diverse range of products categorized by themes such as robots, drones, AI companions, and more. Unleash your imagination and find the perfect robotic companion for endless hours of fun and learning
                         </p>
                     </div>
                     <div className="mt-10 text-purple-950 text-3xl ">

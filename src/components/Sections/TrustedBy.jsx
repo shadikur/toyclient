@@ -8,8 +8,7 @@ const TrustedBy = () => {
                     <div className="text-center">
                         <h2 className="text-3xl font-semibold text-gray-900">
                             <span className="border-b-4 border-yellow-400">
-                                {" "}
-                                Trusted by 1200+ world class businesses{" "}
+                                Trusted by 1200+ world class businesses personals
                             </span>
                         </h2>
                     </div>
@@ -51,9 +50,7 @@ const TrustedBy = () => {
                             </div>
                             <blockquote className="mt-7">
                                 <p className="text-xl leading-relaxed text-gray-800">
-                                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                    ad minim veniam”
+                                    I absolutely love the variety of robot toys available on RoboToy! The quality is top-notch, and my kids couldnt be happier with their new robot companion. Highly recommend!
                                 </p>
                             </blockquote>
                             <img
@@ -107,9 +104,7 @@ const TrustedBy = () => {
                             </div>
                             <blockquote className="mt-7">
                                 <p className="text-xl leading-relaxed text-gray-800">
-                                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                    ad minim veniam”
+                                    Shopping on RoboToy has been a fantastic experience. The website is user-friendly, the ordering process is seamless, and the customer support is exceptional. Plus, the fast shipping ensured that my kids didnt have to wait long to enjoy their new robot toy. Will definitely shop here again!
                                 </p>
                             </blockquote>
                             <img
