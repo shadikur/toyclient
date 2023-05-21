@@ -1,9 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import TabContent from '../TabContent/TabContent';
 
 const ItemsByCategory = () => {
     const [active, setActive] = useState(0);
+    const [toyData, setToyData] = useState([]);
+    const [category, setCategory] = useState('ttb')
+
+    useEffect(() => {
+        const fetchToyData = async () => {
+            try {
+                const response = await fetch(`http://localhost:4750/category/${category}/?limit=4`);
+                const data = await response.json();
+                setToyData(data);
+            } catch (error) {
+                console.error("Error fetching toy data:", error);
+            }
+        };
+        fetchToyData();
+    }, [category]);
+
+    console.log(toyData);
+    console.log(category);
+
     return (
         <div>
             <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
@@ -33,16 +53,32 @@ const ItemsByCategory = () => {
                             </TabList>
 
                             <TabPanel>
-                                <h2>Any content 1</h2>
+                                {
+                                    toyData.map(toy => {
+                                        <TabContent key={toyData._id} toy={toy}></TabContent>
+                                    })
+                                }
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 2</h2>
+                                {
+                                    toyData.map(toy => {
+                                        <TabContent key={toyData._id} toy={toy}></TabContent>
+                                    })
+                                }
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 3</h2>
+                                {
+                                    toyData.map(toy => {
+                                        <TabContent key={toyData._id} toy={toy}></TabContent>
+                                    })
+                                }
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 4</h2>
+                                {
+                                    toyData.map(toy => {
+                                        <TabContent key={toyData._id} toy={toy}></TabContent>
+                                    })
+                                }
                             </TabPanel>
                         </Tabs>
                     </div>

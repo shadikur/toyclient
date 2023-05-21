@@ -78,6 +78,21 @@ const ContextProvider = ({ children }) => {
         }
     }
 
+    const parseCategory = (shortCode) => {
+        switch (shortCode) {
+            case 'ttb':
+                return 'Tin Toy Robots';
+            case 'rob':
+                return 'R.O.B';
+            case 'cubelets':
+                return 'Cubelets';
+            case 'armtron':
+                return 'Armtron';
+            default:
+                return '';
+        }
+    }
+
 
     const contextData = {
         user,
@@ -88,7 +103,8 @@ const ContextProvider = ({ children }) => {
         GoogleSignIn,
         logOut,
         mapAuthCodeToMessage,
-        profileUpdate
+        profileUpdate,
+        parseCategory
     }
 
     return (

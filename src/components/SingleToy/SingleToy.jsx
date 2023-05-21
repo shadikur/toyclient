@@ -1,23 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './SingleToy.css'
 import { Link } from 'react-router-dom';
+import { AppContext } from '../../context/ContextProvider';
 
 const SingleToy = ({ toy }) => {
-
-    const parseCategory = (shortCode) => {
-        switch (shortCode) {
-            case 'ttb':
-                return 'Tin Toy Robots';
-            case 'rob':
-                return 'R.O.B';
-            case 'cubelets':
-                return 'Cubelets';
-            case 'armtron':
-                return 'Armtron';
-            default:
-                return '';
-        }
-    }
+    const { parseCategory } = useContext(AppContext);
     return (
 
         <tr>

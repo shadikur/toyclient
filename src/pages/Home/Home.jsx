@@ -1,7 +1,6 @@
 import React from 'react';
 import Hero from '../../components/Hero/Hero';
 import HomeSecOne from '../../components/Sections/HomeSecOne';
-import Pricing from '../../components/Sections/Pricing';
 import TrustedBy from '../../components/Sections/TrustedBy';
 import ItemsByCategory from '../../components/Sections/ItemsByCategory';
 import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
@@ -24,6 +23,7 @@ const Home = () => {
                 data-aos-duration="3000"><TrustedBy></TrustedBy></div>
         </div>
     );
+
 };
 
 export default Home;
