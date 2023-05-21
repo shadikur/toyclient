@@ -5,6 +5,45 @@ import DynamicTitle from '../../components/DynamicTitle/DynamicTitle';
 
 const AddToys = () => {
     const { user } = useContext(AppContext);
+    const handleAddToys = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const seller = form.seller.value;
+        const email = form.email.value;
+        const toyname = form.toyname.value;
+        const price = form.price.value;
+        const toyphoto = form.toyphoto.value;
+        const category = form.category.value;
+        const stock = form.stock.value;
+        const rating = form.rating.value;
+        const amazon = form.amazon.value;
+        const ebay = form.ebay.value;
+        const description = form.description.value;
+
+        const toydata = {
+            seller,
+            email,
+            toyname,
+            price,
+            toyphoto,
+            category,
+            stock,
+            rating,
+            amazon,
+            ebay,
+            description
+        }
+        console.log(toydata);
+        fetch('http://localhost:4750/addtoys', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toydata)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data));
+    }
     return (
         <div>
             <DynamicTitle
@@ -32,7 +71,7 @@ const AddToys = () => {
                         </div>
                         <div className="mt-6 overflow-hidden bg-white rounded-xl">
                             <div className="px-6 py-12 sm:p-12">
-                                <form action="#" method="POST" className="mt-14">
+                                <form onSubmit={handleAddToys} className="mt-14">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
                                         <div>
                                             <label
@@ -97,7 +136,7 @@ const AddToys = () => {
                                             </label>
                                             <div className="mt-2.5 ">
                                                 <input
-                                                    type="number"
+                                                    type="text"
                                                     name="price"
                                                     id="price"
                                                     placeholder="Enter the price of toy"
@@ -148,8 +187,8 @@ const AddToys = () => {
                                             <div className="mt-2.5 ">
                                                 <input
                                                     type="tel"
-                                                    name=""
-                                                    id=""
+                                                    name="stock"
+                                                    id="stock"
                                                     placeholder="Enter the quanity available in stock"
                                                     className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                                                 />
@@ -164,7 +203,7 @@ const AddToys = () => {
                                             </label>
                                             <div className="mt-2.5 ">
                                                 <input
-                                                    type="number"
+                                                    type="text"
                                                     name="rating"
                                                     id="rating"
                                                     placeholder="Enter the public rating"
