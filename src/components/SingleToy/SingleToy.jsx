@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 
 
 const SingleToy = ({ toy }) => {
-    const { parseCategory } = useContext(AppContext);
+    const { parseCategory, user } = useContext(AppContext);
     const handleDelete = () => {
 
         Swal.fire({
@@ -58,7 +58,9 @@ const SingleToy = ({ toy }) => {
             <td>
                 <Link to={`/standard/details/${toy._id}`} className='btn btn-active btn-secondary'>View Details</Link>
                 <br />
-                <button className='btn btn-warning' onClick={handleDelete}>Delete (Your listing)</button>
+                {
+                    (toy.email == user?.email) ? <button className='btn btn-warning' onClick={handleDelete}>Delete (Your listing)</button> : ''
+                }
             </td>
         </tr>
     );
